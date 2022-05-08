@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">NewsApp</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_message">Choose news on the list to see its contents</string>
+    <string name="news_four">News Four</string>
+    <string name="news_one">News One</string>
+    <string name="news_two">News Two</string>
+    <string name="news_three">News Three</string>
+    <string name="news_six">News Six</string>
+    <string name="news_five">News Five</string>
+    <string name="news_seven">News Seven</string>
+    <string name="back">Back</string>
+    <string name="next">Next</string>
+</resources>
