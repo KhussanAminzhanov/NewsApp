@@ -14,9 +14,14 @@ class NewsContentFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_news_content, container, false)
-        val hintMessage = view.findViewById<TextView>(R.id.hint_message)
-        val someText = requireArguments().getString(NEWS_CONTENT_HEADER_KEY)
-        hintMessage.text = someText
+        val header = view.findViewById<TextView>(R.id.header)
+        val author = view.findViewById<TextView>(R.id.author)
+        val content = view.findViewById<TextView>(R.id.content)
+
+        header.text = requireArguments().getString(NEWS_HEADER_KEY)
+        author.text = "by: ${requireArguments().getString(NEWS_AUTHOR_KEY)}"
+        content.text = requireArguments().getString(NEWS_CONTENT_KEY)
+
         return view
     }
 

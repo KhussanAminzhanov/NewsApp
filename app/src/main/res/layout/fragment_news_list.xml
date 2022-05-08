@@ -6,31 +6,6 @@
     android:orientation="vertical"
     tools:context=".NewsListFragment">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:padding="16dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/back_button"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:text="@string/back" />
-
-        <Button
-            android:id="@+id/next_button"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_marginStart="5dp"
-            android:layout_height="wrap_content"
-            android:text="@string/next" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -42,48 +17,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <TextView
-                android:id="@+id/news_one"
-                style="@style/news_header"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/news_one" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/news_two"
-                style="@style/news_header" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/news_three"
-                style="@style/news_header" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/news_four"
-                style="@style/news_header" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/news_five"
-                style="@style/news_header" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/news_six"
-                style="@style/news_header" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/news_seven"
-                style="@style/news_header" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>
 
