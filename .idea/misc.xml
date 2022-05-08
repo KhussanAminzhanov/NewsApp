@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/news_text_view_shape.xml" value="0.298" />
+        <entry key="app/src/main/res/drawable/text_view_selected.xml" value="0.298" />
         <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.33689610944848225" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.31936725096194957" />
         <entry key="app/src/main/res/layout/fragment_news_content.xml" value="0.19479166666666667" />

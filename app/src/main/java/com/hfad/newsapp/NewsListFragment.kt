@@ -1,6 +1,5 @@
 package com.hfad.newsapp
 
-import android.content.res.Configuration.ORIENTATION_PORTRAIT
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,7 +19,7 @@ const val NEWS_CONTENT_KEY = "news_content_key"
 class NewsListFragment : Fragment() {
 
     private val newsListSize = newsList.size - 1
-    var currentOpenNewsIndex = 0
+    var currentOpenNewsIndex = -1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,15 +39,17 @@ class NewsListFragment : Fragment() {
             news.text = value.header
             news.id = index
             news.background =
-                ContextCompat.getDrawable(requireContext(), R.drawable.news_text_view_shape)
-            news.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+                ContextCompat.getDrawable(requireContext(), R.drawable.text_view_def)
+            news.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
 
             news.setOnClickListener {
+                changeTextViewAppearance(currentOpenNewsIndex, R.drawable.text_view_def, R.color.black)
+                changeTextViewAppearance(index, R.drawable.text_view_selected, R.color.white)
                 currentOpenNewsIndex = index
                 openNews(index)
             }
 
-            newsListLinearLayout.addView(news)
+            newsListLinearLayout.addView(news, index)
         }
         return view
     }
@@ -72,10 +73,19 @@ class NewsListFragment : Fragment() {
         }
     }
 
+     fun changeTextViewAppearance(index: Int, drawable: Int, textColor: Int) {
+        val view = view?.findViewById<TextView>(index)
+        view?.setTextColor(ContextCompat.getColor(requireContext(), textColor))
+        view?.background =
+            ContextCompat.getDrawable(requireContext(), drawable)
+    }
+
     fun openNextNews() {
         if (currentOpenNewsIndex < newsListSize) {
-            openNews(currentOpenNewsIndex + 1)
+            changeTextViewAppearance(currentOpenNewsIndex, R.drawable.text_view_def, R.color.black)
             currentOpenNewsIndex += 1
+            changeTextViewAppearance(currentOpenNewsIndex, R.drawable.text_view_selected, R.color.white)
+            openNews(currentOpenNewsIndex)
         }
     }
 

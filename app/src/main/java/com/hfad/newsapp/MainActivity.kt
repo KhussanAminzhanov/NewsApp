@@ -31,6 +31,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun setToPreviousNewsIndex() {
         if (newsListFragment.currentOpenNewsIndex >= 0) {
+            newsListFragment.changeTextViewAppearance(newsListFragment.currentOpenNewsIndex, R.drawable.text_view_def, R.color.black)
+            newsListFragment.changeTextViewAppearance(newsListFragment.currentOpenNewsIndex - 1, R.drawable.text_view_selected, R.color.white)
             newsListFragment.currentOpenNewsIndex -= 1
         }
     }
