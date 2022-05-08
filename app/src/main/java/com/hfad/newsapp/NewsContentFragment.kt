@@ -19,7 +19,7 @@ class NewsContentFragment : Fragment() {
         val content = view.findViewById<TextView>(R.id.content)
 
         header.text = requireArguments().getString(NEWS_HEADER_KEY)
-        author.text = "by: ${requireArguments().getString(NEWS_AUTHOR_KEY)}"
+        author.text = getString(R.string.author, requireArguments().getString(NEWS_AUTHOR_KEY))
         content.text = requireArguments().getString(NEWS_CONTENT_KEY)
 
         return view
