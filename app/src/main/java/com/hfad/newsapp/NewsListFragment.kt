@@ -15,6 +15,7 @@ import androidx.fragment.app.replace
 const val NEWS_HEADER_KEY = "news_header_key"
 const val NEWS_AUTHOR_KEY = "news_author_key"
 const val NEWS_CONTENT_KEY = "news_content_key"
+const val CURRENT_NEWS_INDEX = "current_news_index"
 
 class NewsListFragment : Fragment() {
 
