@@ -13,12 +13,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 
-const val TRANSACTION_NAME = "change content"
 const val NEWS_HEADER_KEY = "news_header_key"
 const val NEWS_AUTHOR_KEY = "news_author_key"
 const val NEWS_CONTENT_KEY = "news_content_key"
 
 class NewsListFragment : Fragment() {
+
+    var currentOpenNewsIndex = 0
+    private val newsListSize = newsList.size - 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,29 +44,41 @@ class NewsListFragment : Fragment() {
             news.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
 
             news.setOnClickListener {
-                val bundle = bundleOf(
-                    NEWS_HEADER_KEY to value.header,
-                    NEWS_AUTHOR_KEY to value.author,
-                    NEWS_CONTENT_KEY to value.content
-                )
-                val orientation = resources.configuration.orientation
-                val fragmentId =
-                    if (orientation == ORIENTATION_PORTRAIT) R.id.fragment_container_news_list
-                    else R.id.fragment_container_news_content
-
-                parentFragmentManager.commit {
-                    setReorderingAllowed(true)
-                    addToBackStack(TRANSACTION_NAME)
-                    replace<NewsContentFragment>(
-                        fragmentId,
-                        args = bundle
-                    )
-                }
+                currentOpenNewsIndex = index
+                openNews(value, index)
             }
 
             newsListLinearLayout.addView(news)
         }
         return view
+    }
+
+    fun openNews(news: News, index: Int) {
+        val bundle = bundleOf(
+            NEWS_HEADER_KEY to news.header,
+            NEWS_AUTHOR_KEY to news.author,
+            NEWS_CONTENT_KEY to news.content
+        )
+        val orientation = resources.configuration.orientation
+        val fragmentId =
+            if (orientation == ORIENTATION_PORTRAIT) R.id.fragment_container_news_list
+            else R.id.fragment_container_news_content
+
+        parentFragmentManager.commit {
+            setReorderingAllowed(true)
+            addToBackStack(index.toString())
+            replace<NewsContentFragment>(
+                fragmentId,
+                args = bundle
+            )
+        }
+    }
+
+    fun openNextNews() {
+        if (currentOpenNewsIndex < newsListSize) {
+            openNews(newsList[currentOpenNewsIndex + 1], currentOpenNewsIndex + 1)
+            currentOpenNewsIndex += 1
+        }
     }
 
 }
