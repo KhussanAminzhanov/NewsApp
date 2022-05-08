@@ -19,8 +19,8 @@ const val NEWS_CONTENT_KEY = "news_content_key"
 
 class NewsListFragment : Fragment() {
 
-    private var currentOpenNewsIndex = 0
     private val newsListSize = newsList.size - 1
+    var currentOpenNewsIndex = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
