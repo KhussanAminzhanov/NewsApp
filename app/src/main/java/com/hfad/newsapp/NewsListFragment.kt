@@ -19,7 +19,7 @@ const val NEWS_CONTENT_KEY = "news_content_key"
 
 class NewsListFragment : Fragment() {
 
-    var currentOpenNewsIndex = 0
+    private var currentOpenNewsIndex = 0
     private val newsListSize = newsList.size - 1
 
     override fun onCreateView(
@@ -45,7 +45,7 @@ class NewsListFragment : Fragment() {
 
             news.setOnClickListener {
                 currentOpenNewsIndex = index
-                openNews(value, index)
+                openNews(index)
             }
 
             newsListLinearLayout.addView(news)
@@ -53,30 +53,28 @@ class NewsListFragment : Fragment() {
         return view
     }
 
-    fun openNews(news: News, index: Int) {
+    private fun openNews(index: Int) {
+        val news = newsList[index]
         val bundle = bundleOf(
             NEWS_HEADER_KEY to news.header,
             NEWS_AUTHOR_KEY to news.author,
             NEWS_CONTENT_KEY to news.content
         )
-        val orientation = resources.configuration.orientation
-        val fragmentId =
-            if (orientation == ORIENTATION_PORTRAIT) R.id.fragment_container_news_list
-            else R.id.fragment_container_news_content
 
         parentFragmentManager.commit {
             setReorderingAllowed(true)
             addToBackStack(index.toString())
             replace<NewsContentFragment>(
-                fragmentId,
-                args = bundle
+                R.id.fragment_container_news_content,
+                args = bundle,
+                tag = "TAG:$index"
             )
         }
     }
 
     fun openNextNews() {
         if (currentOpenNewsIndex < newsListSize) {
-            openNews(newsList[currentOpenNewsIndex + 1], currentOpenNewsIndex + 1)
+            openNews(currentOpenNewsIndex + 1)
             currentOpenNewsIndex += 1
         }
     }

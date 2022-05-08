@@ -14,12 +14,7 @@ class MainActivity : AppCompatActivity() {
         val backButton = findViewById<Button>(R.id.back_button)
         val nextButton = findViewById<Button>(R.id.next_button)
 
-        backButton.setOnClickListener {
-            supportFragmentManager.popBackStack()
-        }
-
-        nextButton.setOnClickListener {
-            newsListFragment.openNextNews()
-        }
+        backButton.setOnClickListener { supportFragmentManager.popBackStack() }
+        nextButton.setOnClickListener { newsListFragment.openNextNews() }
     }
 }
